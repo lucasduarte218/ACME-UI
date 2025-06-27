@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Calendar, Plus, Search } from 'lucide-react';
+import { Plus, Search } from 'lucide-react';
 import AppointmentForm from '@/components/appointments/AppointmentForm';
 import AppointmentList from '@/components/appointments/AppointmentList';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';

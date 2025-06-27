@@ -11,9 +11,19 @@ import { Skeleton } from '@/components/ui/Skeleton';
 
 // Utilitário para formatação de datas
 export function formatDate(dateStr: string) {
-  const d = new Date(dateStr);
+  if (!dateStr) return '-';
+  // Cria a data como UTC
+  const d = new Date(dateStr + 'Z');
   if (isNaN(d.getTime())) return '-';
-  return d.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  // Exibe sempre em UTC-3 (America/Sao_Paulo)
+  return d.toLocaleString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'America/Sao_Paulo',
+  });
 }
 
 interface AppointmentListProps {

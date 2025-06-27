@@ -37,7 +37,6 @@ const PatientForm: React.FC<PatientFormProps> = ({ onSuccess, initialData, mode 
     handleSubmit,
     reset,
     control,
-    setValue,
     formState: { errors, isSubmitting },
   } = useForm<PatientFormValues>({
     resolver: zodResolver(patientSchema),

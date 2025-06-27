@@ -4,7 +4,7 @@ import { apiService } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { toastSuccess, useToast } from '@/hooks/use-toast';
 import type { Patient, PatientFilters } from '@/types';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import PatientForm from './PatientForm';
 import { Pencil, Ban } from 'lucide-react';
 import { Skeleton } from '@/components/ui/Skeleton';
@@ -115,7 +115,13 @@ const PatientList: React.FC<PatientListProps> = ({ filters }) => {
         </tbody>
       </table>
       {/* Modal de edição */}
-      <Dialog open={editOpen} onOpenChange={(open) => { setEditOpen(open); if (!open) setEditPatient(null); }}>
+      <Dialog open={editOpen} onOpenChange={(open) => {
+        setEditOpen(open);
+        if (!open) {
+          setEditPatient(null);
+          queryClient.invalidateQueries({ queryKey: ['patients'] });
+        }
+      }}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Editar Paciente</DialogTitle>
@@ -127,7 +133,7 @@ const PatientList: React.FC<PatientListProps> = ({ filters }) => {
               onSuccess={() => {
                 setEditOpen(false);
                 setEditPatient(null);
-                queryClient.invalidateQueries({ queryKey: ['patients'] });
+                // queryClient.invalidateQueries({ queryKey: ['patients'] }); // já é feito no onOpenChange
               }}
             />
           )}

@@ -21,7 +21,6 @@ Este projeto é um sistema web moderno para gestão de pacientes e atendimentos,
   - Sidebar colorida com ícones.
   - Cards, tabelas e modais estilizados.
   - Skeleton loaders durante carregamento.
-  - Responsividade total para desktop e mobile.
 - **Integração com API**:
   - Consumo centralizado de endpoints REST.
   - Filtros e listagens dinâmicas.
